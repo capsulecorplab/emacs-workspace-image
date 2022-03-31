@@ -82,7 +82,6 @@
   - name: Install Keychain
     apt:
       name: "keychain={{ keychain_version_to_install }}"
-      update_cache: yes
   - name: Get git version
     shell: git version | sed 's/[[:alpha:]|(|[:space:]]//g'
     register: installed_git_version
@@ -102,6 +101,19 @@
     fail:
       msg: "Keychain Version Error: Expected {{ keychain_version_expected }} | Found {{ installed_keychain_version.stdout }}"
     when: installed_keychain_version.stdout != keychain_version_expected    
+
+-
+  # install emacs27
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+  tasks:
+  - name: Add PPA repository for emacs27
+    shell: add-apt-repository ppa:kelleyk/emacs
+  - name: Apt install emacs27
+    apt:
+      name: emacs27
+      update_cache: yes
 
 -
   # install Python packages with pip
