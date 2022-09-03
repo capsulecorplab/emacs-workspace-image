@@ -3,7 +3,7 @@ version: "3.7"
 services:
   kasm:
     build: .
-    image: kasm-emacs27-workspace
+    image: ghcr.io/capsulecorplab/kasm-emacs-workspace:main
     ports:
       - "6901:6901"
     environment:
