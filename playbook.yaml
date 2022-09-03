@@ -60,6 +60,18 @@
     - role: webarchitect609.google_chrome
 
 -
+  # install sqlite
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+  - name: Apt install sqlite
+    apt:
+      name: sqlite
+      update_cache: yes
+
+-
   # install keychain and git
   hosts: localhost
   connection: local
