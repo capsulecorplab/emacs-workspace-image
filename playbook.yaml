@@ -60,6 +60,18 @@
     - role: webarchitect609.google_chrome
 
 -
+  # install build-essential
+  hosts: localhost
+  connection: local
+  gather_facts: yes
+
+  tasks:
+  - name: Install build-essential with Apt
+    apt:
+      name: build-essential
+      update_cache: yes
+
+-
   # install sqlite
   hosts: localhost
   connection: local
